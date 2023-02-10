@@ -9,8 +9,8 @@ export default function Nav() : JSX.Element{
             <div>
                 <Link to={'/'}>Acceuil</Link>
                 <Link to={'/ingredients'}>Les ingredients</Link>
-                <Link to={'/'}>Les recettes</Link>
-                <Link to={'/'}>Se connecter</Link>
+                <Link to={'/recipes'}>Les recettes</Link>
+                <Link to={'/connexion'}>Se connecter</Link>
             </div>
         </nav>
     )

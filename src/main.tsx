@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import Homepage from './Homepage'
 import './index.css'
 import {
     createBrowserRouter,
@@ -10,12 +10,16 @@ import {
 } from "react-router-dom";
 import Ingredients from "../pages/Ingredients";
 import IngredientsForm from "../components/IngredientsForm";
+import Recipes from "../pages/Recipes";
+import ConnexionForm from "../pages/ConnexionForm";
 
 const router = createBrowserRouter([
-        {path:'/', element:<App/> },
+        {path:'/', element:<Homepage/> },
         {path:'/ingredients', element:<Ingredients/> },
-        {path:'/ajoutIngredients', element:<IngredientsForm/> },
+        {path:'/ajoutIngredients', element:<IngredientsForm update={false}/> },
         {path:'/modifIngredients', element:<IngredientsForm update={true}/> },
+        {path:'/recipes', element:<Recipes/> },
+        {path:'/connexion', element:<ConnexionForm/> },
     ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

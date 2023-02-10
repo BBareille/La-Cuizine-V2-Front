@@ -11,10 +11,18 @@ export default function IngredientsForm(props:propsForm){
 
 
     const [ingredient, setIngredient] = useState("")
+    const [idToUpdate, setIdToUpdate] = useState()
     const navigate = useNavigate();
     const location = useLocation();
 
-    let idToUpdate = location.state.ingredientId;
+
+    useEffect(function(){
+        if(props.update){
+            setIdToUpdate(location.state.ingredientId);
+        }
+    }, [])
+
+
 
     function newIngredient(){
         let url = 'http://127.0.0.1:8000/api/newIngredient/' +ingredient
@@ -43,7 +51,7 @@ export default function IngredientsForm(props:propsForm){
             <Nav/>
         <form>
             <label>{props.update?"Modifier un ingrédient": "Ajouter un ingrédient"}</label>
-            <input onChange={changeHandler}/>
+            <input onChange={changeHandler} />
             <button onClick={props.update?modifyIngredient:newIngredient}>Valider</button>
         </form>
         </>

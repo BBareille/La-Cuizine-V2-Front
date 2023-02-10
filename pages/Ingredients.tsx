@@ -1,7 +1,7 @@
 import IngredientList from "../components/ingredientList";
 import Nav from "../components/nav";
 import {Link} from "react-router-dom";
-
+import "../style/ingredientsList.css"
 export default function Ingredients(){
 
 
@@ -9,7 +9,7 @@ export default function Ingredients(){
         <>
             <Nav/>
             <div id='ingredients'>
-                Les Ingrédients
+                <h1>Les Ingrédients</h1>
                 <IngredientList />
                 <Link to="/ajoutIngredients">Ajouter un ingrédients</Link>
             </div>

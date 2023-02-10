@@ -1,0 +1,20 @@
+#ingredients {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#ingredients>ul{
+    list-style: none;
+}
+#ingredients>ul>li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+#ingredients>ul>li>div>button{
+    width: 80px;
+    text-align: center;
+    font-size: 0.7em;
+}

@@ -10,9 +10,11 @@ export default function DeleteButton(props:any){
         let url = 'http://127.0.0.1:8000/api/deleteIngredient/' + id
         axios.delete(url).then(function(response){
             console.log(response.data)
+        }).then(function(){
+            window.location.reload()
         })
 
-        navigate('/ingredients')
+
     }
 
     return(
