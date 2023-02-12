@@ -1,15 +1,19 @@
 import {useNavigate} from "react-router";
 
 interface propsID{
+
+    object : string
     id : number
 }
-export default function ModifyButton(props:propsID){
+export default function ModifyButton(props : propsID){
 
     let id = props.id
+    let object = props.object
     const navigate = useNavigate();
 
     function modifyIngredient(){
-        navigate('/modifIngredients', {
+        let url = "/modif" + object
+        navigate(url, {
             state: {
                 ingredientId : id,
             }

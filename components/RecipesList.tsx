@@ -11,7 +11,7 @@ export default function RecipesList(): JSX.Element | any{
     }
     interface Recipes {
         title: string;
-        image?: HTMLImageElement;
+        image?: string;
         prepTime: number;
         cookingTime: number;
 
@@ -23,7 +23,7 @@ export default function RecipesList(): JSX.Element | any{
     function getRecipesList(): void{
         axios.get('http://127.0.0.1:8000/api/recipes')
             .then(function (response) {
-                console.log(response)
+                setRecipesList(response.data)
             });
     }
 
@@ -32,7 +32,7 @@ export default function RecipesList(): JSX.Element | any{
     },[])
 
     function getList(){
-        return (recipesList.map((item: Recipes) =>  <li key={item.id}><div>{item.title.toString()}</div><div><ModifyButton id={item.id}/><DeleteButton id={item.id}/></div></li>))
+        return (recipesList.map((item: Recipes) =>  <li key={item.id}><div>{item.title}<img alt='' src={item.image}/></div><div><ModifyButton object={'Recipe'} id={item.id}/><DeleteButton object={'Recipe'} id={item.id}/></div></li>))
     }
     console.log(recipesList)
 

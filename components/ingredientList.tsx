@@ -24,7 +24,7 @@ export default function IngredientList(): JSX.Element | any{
     },[])
 
     function getList(){
-        return (ingredientList.map((item: Ingredient) =>  <li key={item.id}><div>{item.name.toString()}</div><div><ModifyButton id={item.id}/><DeleteButton id={item.id}/></div></li>))
+        return (ingredientList.map((item: Ingredient) =>  <li key={item.id}><div>{item.name.toString()}</div><div><ModifyButton object={'Ingredients'} id={item.id}/><DeleteButton object={'Ingredient'} id={item.id}/></div></li>))
     }
 
     if(ingredientList) {
