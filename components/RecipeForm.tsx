@@ -19,7 +19,6 @@ export default function RecipeForm(props :propsForm){
 
     let update = props.update
     let location = useLocation()
-    const [idToUpdate, setIdToUpdate] = useState()
 
     const navigate = useNavigate()
     const [recipeDetails, setRecipeDetails] = useState<Recipe>({
@@ -28,35 +27,27 @@ export default function RecipeForm(props :propsForm){
         description: "",
         prep_time: 0,
         cooking_time: 0,
-        id : location.state.ingredientId
+        id : update ? location.state.update : ''
     });
 
-    useEffect(function(){
-        if(props.update){
-            setIdToUpdate(location.state.ingredientId);
-        }
-    }, [])
 
     function changeHandler(ev: any):void{
         setRecipeDetails({
             ...recipeDetails,
             [ev.target.name] : ev.target.value});
-        console.log(recipeDetails)
     }
     function newRecipes(){
         let url = 'http://127.0.0.1:8000/api/newRecipes/'
         axios.post(url, recipeDetails)
             .then(function (response){
-            console.log(response)
         }, (error) => {
-                console.log(error);
             })
         navigate('/recipes')
     }
 
     function modifyRecipe(){
         let url = 'http://127.0.0.1:8000/api/modifyRecipe/' + recipeDetails.id
-        axios.put(url, recipeDetails).then(response => console.log(response.data))
+        axios.put(url, recipeDetails).then(response => response.data)
         navigate('/recipes')
     }
 
