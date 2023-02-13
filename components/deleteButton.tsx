@@ -19,6 +19,6 @@ export default function DeleteButton(props:any){
     }
 
     return(
-        <button onClick={deleteIngredients}>Supprimer</button>
+        <button className='deleteButton' onClick={deleteIngredients}>Supprimer</button>
     )
 }

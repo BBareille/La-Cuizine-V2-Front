@@ -1,0 +1,45 @@
+.recipesList{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.recipes{
+    display: grid;
+    list-style: none;
+    border: solid 1px;
+    margin: 10px;
+    padding: 10px;
+    justify-items: center;
+    border-radius: 5px;
+}
+
+.recipes>div{
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+
+.recipes>div>img{
+    display: flex;
+    width: 70px;
+}
+
+.action>button{
+    display: flex;
+    height: 30px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.deleteButton{
+    background-color: #b00505;
+    color: white;
+}
+
+.modifyButton{
+    background-color: #494db2;
+    color: white;
+}

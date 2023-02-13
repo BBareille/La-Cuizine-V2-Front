@@ -2,6 +2,7 @@ import Nav from "../components/nav";
 import {Link} from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import RecipesList from "../components/RecipesList";
+import "../style/recipesList.css";
 export default function Recipes(){
 
 

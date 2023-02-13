@@ -22,6 +22,6 @@ export default function ModifyButton(props : propsID){
 
 
     return(
-        <button onClick={modifyIngredient}>Modifier</button>
+        <button className='modifyButton' onClick={modifyIngredient}>Modifier</button>
     )
 }

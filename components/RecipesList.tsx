@@ -32,13 +32,13 @@ export default function RecipesList(): JSX.Element | any{
     },[])
 
     function getList(){
-        return (recipesList.map((item: Recipes) =>  <li key={item.id}><div>{item.title}<img alt='' src={item.image}/></div><div><ModifyButton object={'Recipe'} id={item.id}/><DeleteButton object={'Recipe'} id={item.id}/></div></li>))
+        return (recipesList.map((item: Recipes) =>  <li className="recipes" key={item.id}><div>{item.title}<img alt='' src={item.image}/></div><div className='action'><ModifyButton object={'Recipe'} id={item.id}/><DeleteButton object={'Recipe'} id={item.id}/></div></li>))
     }
     console.log(recipesList)
 
 
         return (
-            <ul>
+            <ul className='recipesList'>
                 {recipesList?getList(): "En cours de chargement"}
             </ul>
         )

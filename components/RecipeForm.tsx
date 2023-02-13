@@ -1,7 +1,8 @@
 import Nav from "./nav";
-import axios, {get} from "axios";
+import axios from "axios";
 import {useLocation, useNavigate} from "react-router";
 import {useEffect, useState} from "react";
+import "../style/recipesForm.css"
 
 interface propsForm {
     update : boolean
@@ -78,6 +79,8 @@ export default function RecipeForm(props :propsForm){
                 <input type="number" name='prep_time' value={recipeDetails.prep_time} onChange={changeHandler}/>
                 <label>Temps de cuisson</label>
                 <input type="number" name='cooking_time' value={recipeDetails.cooking_time} onChange={changeHandler}/>
+                {/*<label>Description</label>*/}
+                {/*<textarea name='description'/>*/}
 
                 <button onClick={props.update?modifyRecipe:newRecipes}>Valider</button>
             </form>
