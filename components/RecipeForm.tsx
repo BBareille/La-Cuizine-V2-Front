@@ -12,8 +12,8 @@ interface Recipe{
     title : string,
     image : string,
     description: string,
-    prep_time: number,
-    cooking_time: number,
+    prepTime: number | null,
+    cookingTime: number | null,
     id: number,
 }
 export default function RecipeForm(props :propsForm){
@@ -26,11 +26,10 @@ export default function RecipeForm(props :propsForm){
         title : "",
         image : "",
         description: "",
-        prep_time: 0,
-        cooking_time: 0,
-        id : update ? location.state.update : ''
+        prepTime: null,
+        cookingTime: null,
+        id : update ? location.state.ingredientId : ''
     });
-
 
     function changeHandler(ev: any):void{
         setRecipeDetails({
@@ -59,6 +58,7 @@ export default function RecipeForm(props :propsForm){
             function getRecipeDetails() {
                 let url = 'http://127.0.0.1:8000/api/recipe/' + recipeDetails.id
                 axios.get(url).then(function (response) {
+                    console.log(response.data)
                     setRecipeDetails(response.data)
                 })
             } getRecipeDetails()
@@ -76,9 +76,9 @@ export default function RecipeForm(props :propsForm){
                 <label>Url de l'image</label>
                 <input name='image' value={recipeDetails.image} onChange={changeHandler}/>
                 <label>Temps de préparation</label>
-                <input type="number" name='prep_time' value={recipeDetails.prep_time} onChange={changeHandler}/>
+                <input type='number' name='prep_time' value={recipeDetails.prepTime} onChange={changeHandler}/>
                 <label>Temps de cuisson</label>
-                <input type="number" name='cooking_time' value={recipeDetails.cooking_time} onChange={changeHandler}/>
+                <input type='number' name='cooking_time' value={recipeDetails.cookingTime} onChange={changeHandler}/>
                 {/*<label>Description</label>*/}
                 {/*<textarea name='description'/>*/}
 

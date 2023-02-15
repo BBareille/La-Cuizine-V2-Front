@@ -19,6 +19,10 @@
     justify-items: center;
 }
 
+.recipes>div:hover{
+    cursor: pointer;
+}
+
 .recipes>div>img{
     display: flex;
     width: 70px;

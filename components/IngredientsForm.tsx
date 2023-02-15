@@ -25,6 +25,7 @@ export default function IngredientsForm(props:propsForm){
 
 
     function newIngredient(){
+        console.log(ingredient)
         let url = 'http://127.0.0.1:8000/api/newIngredient/' +ingredient
        axios.post(url, [])
            .then(function (response){

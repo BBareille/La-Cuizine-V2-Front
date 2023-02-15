@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {createContext, useContext} from 'react'
 import ReactDOM from 'react-dom/client'
 import Homepage from './Homepage'
 import './index.css'
@@ -13,6 +13,9 @@ import IngredientsForm from "../components/IngredientsForm";
 import Recipes from "../pages/Recipes";
 import ConnexionForm from "../pages/ConnexionForm";
 import RecipeForm from "../components/RecipeForm";
+import RecipeDetails from "../components/RecipeDetails";
+
+export const Login = createContext()
 
 const router = createBrowserRouter([
         {path:'/', element:<Homepage/> },
@@ -23,6 +26,7 @@ const router = createBrowserRouter([
         {path:'/ajoutRecipes', element:<RecipeForm update={false}/> },
         {path:'/modifRecipe', element:<RecipeForm update={true}/> },
         {path:'/connexion', element:<ConnexionForm/> },
+        {path:'/recipeDetails/:id', element:<RecipeDetails/>}
     ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
