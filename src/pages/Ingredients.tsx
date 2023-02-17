@@ -1,7 +1,7 @@
 import IngredientList from "../components/ingredientList";
 import Nav from "../components/nav";
 import {Link} from "react-router-dom";
-import "../style/ingredientsList.css"
+import "../../style/ingredientsList.css"
 export default function Ingredients(){
 
 

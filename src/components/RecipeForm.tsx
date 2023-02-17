@@ -2,7 +2,7 @@ import Nav from "./nav";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router";
 import {useEffect, useState} from "react";
-import "../style/recipesForm.css"
+import "../../style/recipesForm.css"
 
 interface propsForm {
     update : boolean

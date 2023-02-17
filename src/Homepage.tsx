@@ -1,7 +1,7 @@
 import './App.css'
-import Nav from "../components/nav";
-import IngredientList from "../components/ingredientList";
-import SearchBar from "../components/SearchBar";
+import Nav from "./components/nav";
+import IngredientList from "./components/ingredientList";
+import SearchBar from "./components/SearchBar";
 
 
 function Homepage() {

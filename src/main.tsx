@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react'
+import React, {createContext, useContext, useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import Homepage from './Homepage'
 import './index.css'
@@ -8,14 +8,26 @@ import {
     Route,
     RouterProvider
 } from "react-router-dom";
-import Ingredients from "../pages/Ingredients";
-import IngredientsForm from "../components/IngredientsForm";
-import Recipes from "../pages/Recipes";
-import ConnexionForm from "../pages/ConnexionForm";
-import RecipeForm from "../components/RecipeForm";
-import RecipeDetails from "../components/RecipeDetails";
+import Ingredients from "./pages/Ingredients";
+import IngredientsForm from "./components/IngredientsForm";
+import Recipes from "./pages/Recipes";
+import ConnexionForm from "./pages/ConnexionForm";
+import RecipeForm from "./components/RecipeForm";
+import RecipeDetails from "./components/RecipeDetails";
 
-export const Login = createContext()
+export const LoginContext = createContext('')
+
+
+export function Login(){
+    const [login, setLogin] = useState()
+
+    return (
+        <LoginContext.Provider value={{login, setLogin}}>
+            <RouterProvider router={router} />
+        </LoginContext.Provider>
+    )
+
+}
 
 const router = createBrowserRouter([
         {path:'/', element:<Homepage/> },
@@ -31,6 +43,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <div>
-      <RouterProvider router={router} />
+      <Login/>
   </div>,
 )
