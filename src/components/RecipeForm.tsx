@@ -1,33 +1,28 @@
 import Nav from "./nav";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import "../../style/recipesForm.css"
+import {LoginContext} from "../main";
+import {Recipe} from "../interfaces/recipes_types";
 
 interface propsForm {
     update : boolean
-}
-
-interface Recipe{
-    title : string,
-    image : string,
-    description: string,
-    prepTime: number | null,
-    cookingTime: number | null,
-    id: number,
 }
 export default function RecipeForm(props :propsForm){
 
     let update = props.update
     let location = useLocation()
+    let {token} = useContext(LoginContext)
+
 
     const navigate = useNavigate()
     const [recipeDetails, setRecipeDetails] = useState<Recipe>({
         title : "",
         image : "",
         description: "",
-        prepTime: null,
-        cookingTime: null,
+        prep_time: "",
+        cooking_time: "",
         id : update ? location.state.ingredientId : ''
     });
 
@@ -37,17 +32,19 @@ export default function RecipeForm(props :propsForm){
             [ev.target.name] : ev.target.value});
     }
     function newRecipes(){
-        let url = 'http://127.0.0.1:8000/api/newRecipes/'
-        axios.post(url, recipeDetails)
+        let url = 'http://localhost:8000/api/newRecipes'
+        axios.post(url, recipeDetails, {headers : {Authorization : "Bearer " + token}} )
             .then(function (response){
+                console.log(response)
         }, (error) => {
+                console.log(error)
             })
         navigate('/recipes')
     }
 
     function modifyRecipe(){
-        let url = 'http://127.0.0.1:8000/api/modifyRecipe/' + recipeDetails.id
-        axios.put(url, recipeDetails).then(response => response.data)
+        let url = 'http://localhost:8000/api/modifyRecipe/' + recipeDetails.id
+        axios.put(url, recipeDetails, {headers : {Authorization : "Bearer " + token}}).then(response => response.data)
         navigate('/recipes')
     }
 
@@ -56,7 +53,7 @@ export default function RecipeForm(props :propsForm){
 
         useEffect(() => {
             function getRecipeDetails() {
-                let url = 'http://127.0.0.1:8000/api/recipe/' + recipeDetails.id
+                let url = 'http://localhost:8000/api/recipe/' + recipeDetails.id
                 axios.get(url).then(function (response) {
                     console.log(response.data)
                     setRecipeDetails(response.data)
@@ -76,13 +73,13 @@ export default function RecipeForm(props :propsForm){
                 <label>Url de l'image</label>
                 <input name='image' value={recipeDetails.image} onChange={changeHandler}/>
                 <label>Temps de préparation</label>
-                <input type='number' name='prep_time' value={recipeDetails.prepTime} onChange={changeHandler}/>
+                <input type='number' name='prep_time' value={recipeDetails.prep_time} onChange={changeHandler}/>
                 <label>Temps de cuisson</label>
-                <input type='number' name='cooking_time' value={recipeDetails.cookingTime} onChange={changeHandler}/>
+                <input type='number' name='cooking_time' value={recipeDetails.cooking_time} onChange={changeHandler}/>
                 {/*<label>Description</label>*/}
                 {/*<textarea name='description'/>*/}
 
-                <button onClick={props.update?modifyRecipe:newRecipes}>Valider</button>
+                <button type="button" onClick={props.update?modifyRecipe:newRecipes}>Valider</button>
             </form>
         </div>
     )

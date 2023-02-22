@@ -15,14 +15,16 @@ import ConnexionForm from "./pages/ConnexionForm";
 import RecipeForm from "./components/RecipeForm";
 import RecipeDetails from "./components/RecipeDetails";
 
-export const LoginContext = createContext('')
+export const LoginContext = createContext<any>("")
 
 
 export function Login(){
+
     const [login, setLogin] = useState()
+    const [token, setToken] = useState()
 
     return (
-        <LoginContext.Provider value={{login, setLogin}}>
+        <LoginContext.Provider value={{login, setLogin, token, setToken}}>
             <RouterProvider router={router} />
         </LoginContext.Provider>
     )

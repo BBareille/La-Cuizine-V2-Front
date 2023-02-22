@@ -4,6 +4,7 @@ interface propsID{
 
     object : string
     id : number
+    token: string
 }
 export default function ModifyButton(props : propsID){
 

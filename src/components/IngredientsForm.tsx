@@ -25,8 +25,7 @@ export default function IngredientsForm(props:propsForm){
 
 
     function newIngredient(){
-        console.log(ingredient)
-        let url = 'http://127.0.0.1:8000/api/newIngredient/' +ingredient
+        let url = 'http://localhost:8000/api/newIngredient/' + ingredient
        axios.post(url, [])
            .then(function (response){
                console.log(response.data);
@@ -35,7 +34,7 @@ export default function IngredientsForm(props:propsForm){
     }
 
     function modifyIngredient(){
-        let url = 'http://127.0.0.1:8000/api/updateIngredient/'+idToUpdate+ "/" + ingredient
+        let url = 'http://localhost:8000/api/updateIngredient/'+idToUpdate+ "/" + ingredient
         axios.put(url, [])
             .then(function (response){
                 console.log(response.data)

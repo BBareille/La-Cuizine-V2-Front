@@ -8,7 +8,6 @@ export default function Nav() : JSX.Element{
 
     const {login} = useContext(LoginContext)
 
-    useEffect(()=> console.log(login), [])
 
     return (
         <nav>
@@ -17,7 +16,8 @@ export default function Nav() : JSX.Element{
                 <Link to={'/'}>Acceuil</Link>
                 <Link to={'/ingredients'}>Les ingredients</Link>
                 <Link to={'/recipes'}>Les recettes</Link>
-                <Link to={'/connexion'}>{login? login: 'Se connecter'}</Link>
+                {login? <Link to={'/'}>{login.username}</Link>:<Link to={'/connexion'}>Se
+                 connecter</Link>}
             </div>
         </nav>
     )
